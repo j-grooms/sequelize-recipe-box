@@ -4,14 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       validate: {
-        notNull: true,
+        allowNull: false,
         notEmpty: true
       }
 
     }
   }, {});
   MeasurementUnit.associate = function(models) {
-    MeasurementUnit.belongsTo(models.ingredient, { foreignKey: "measurementUnitId"});
+    MeasurementUnit.belongsTo(models.Ingredient, { foreignKey: "measurementUnitId"});
   };
   return MeasurementUnit;
 };

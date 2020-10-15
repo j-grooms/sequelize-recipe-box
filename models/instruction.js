@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const instruction = sequelize.define('instruction', {
+  const Instruction = sequelize.define('Instruction', {
     specification:{
       type: DataTypes.TEXT,
       validate: {
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     listOrder: {
       type: DataTypes.INTEGER,
       validate: {
-        notNull: true,
+        allowNull: false,
         min: {
           args: [0]
         }
@@ -19,15 +19,15 @@ module.exports = (sequelize, DataTypes) => {
     recipeId:{
       type: DataTypes.INTEGER,
       validate: {
-        notNull: true,
+        allowNull: false,
         min: {
           args: [0]
         }
       }
     }
   }, {});
-  instruction.associate = function(models) {
-    instruction.belongsTo(models.recipe, {foreignKey: 'recipeId'});
+  Instruction.associate = function(models) {
+    Instruction.belongsTo(models.Recipe, {foreignKey: 'recipeId'});
   };
-  return instruction;
+  return Instruction;
 };

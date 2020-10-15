@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const ingredient = sequelize.define('ingredient', {
+  const Ingredient = sequelize.define('Ingredient', {
     amount: {
       type: DataTypes.NUMERIC,
       validate: {
-        notNull: true,
+        allowNull: false,
         min: {
           args: [0]
         }
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     measurementUnitId:{
       type: DataTypes.INTEGER,
       validate: {
-        notNull: true,
+        allowNull: false,
         min: {
           args: [0]
         }
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     foodStuff: {
       type: DataTypes.TEXT,
       validate: {
-        notNull: true,
+        allowNull: false,
         notEmpty: true
       }
 
@@ -30,16 +30,16 @@ module.exports = (sequelize, DataTypes) => {
     recipeId: {
       type: DataTypes.INTEGER,
       validate: {
-        notNull: true,
+        allowNull: false,
         min: {
           args: [0],
         }
       }
     },
   }, {});
-  ingredient.associate = function(models) {
-    ingredient.belongsTo(models.MeasurementUnit, { foreignKey: "measurementUnitId"});
-    ingredient.belongsTo(models.recipe, { foreignKey: 'recipeId'});
+  Ingredient.associate = function(models) {
+    Ingredient.belongsTo(models.MeasurementUnit, { foreignKey: "measurementUnitId"});
+    Ingredient.belongsTo(models.Recipe, { foreignKey: 'recipeId'});
   };
-  return ingredient;
+  return Ingredient;
 };

@@ -29,10 +29,10 @@ async function getTenNewestRecipes() {
   //
   // The general form of this is
   //
-  // Model.findAll({
-  //     { ... specify your options here... }
-  // });
-  //
+  Recipe.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: 10
+  });
   // Docs: https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll
 }
 
