@@ -29,7 +29,7 @@ async function getTenNewestRecipes() {
   //
   // The general form of this is
   //
-  Recipe.findAll({
+  return await Recipe.findAll({
     order: [["createdAt", "DESC"]],
     limit: 10
   });
@@ -54,6 +54,19 @@ async function getRecipeById(id) {
   //     }
   //   ]
   // });
+  return await Recipe.findByPk(id, {
+    include: [
+      Instruction,
+      {
+        model: Ingredient,
+        include: [MeasurementUnit]
+      }
+
+    ]
+
+
+  });
+
   //
   // Look at the data model in the instructions to see the relations between the
   // Recipe table and the Ingredients and Instructions table. Figure out which
