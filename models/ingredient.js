@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     amount: {
       type: DataTypes.NUMERIC,
       validate: {
-        allowNull: false,
         min: {
           args: [0]
         }
@@ -13,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     measurementUnitId:{
       type: DataTypes.INTEGER,
       validate: {
-        allowNull: false,
         min: {
           args: [0]
         }
@@ -22,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     foodStuff: {
       type: DataTypes.TEXT,
       validate: {
-        allowNull: false,
         notEmpty: true
       }
 
@@ -30,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
     recipeId: {
       type: DataTypes.INTEGER,
       validate: {
-        allowNull: false,
         min: {
           args: [0],
         }

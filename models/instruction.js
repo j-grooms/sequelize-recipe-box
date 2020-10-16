@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     listOrder: {
       type: DataTypes.INTEGER,
       validate: {
-        allowNull: false,
         min: {
           args: [0]
         }
@@ -19,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     recipeId:{
       type: DataTypes.INTEGER,
       validate: {
-        allowNull: false,
         min: {
           args: [0]
         }
