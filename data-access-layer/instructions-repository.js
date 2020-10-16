@@ -23,10 +23,17 @@ try {
 async function createNewInstruction(specification, recipeId) {
   // Use the findAll method of the Instruction object to find all the
   // instructions for the specified recipe.
-  //
+  const all = await Instruction.findAll({where: {
+    recipeId
+  }})
+  console.log('======================================================', all[0].toJSON())
   // Use the create method of the Instruction object to create a new object and
   // return it using the maximum listOrder from the query just before this.
-  //
+  return await Instruction.create({
+    specification: specification,
+    listOrder: all.length + 1,
+    recipeId: recipeId
+  })
   // Docs: https://sequelize.org/v5/manual/instances.html#creating-persistent-instances
 }
 
